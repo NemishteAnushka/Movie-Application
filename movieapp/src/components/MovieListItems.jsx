@@ -1,9 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-function MovieListItems({ Title }) {
+function MovieListItems({ Title, imdbID }) {
   return (
     <div>
-      <p>{Title}</p>
+      <Link to={`detail/${imdbID}`}>
+        <p>{Title}</p>
+      </Link>
     </div>
   );
 }

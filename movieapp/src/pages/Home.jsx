@@ -10,7 +10,7 @@ export async function loader({ request }) {
   const searchTerm = url.searchParams.get("search") || "marvel";
 
   try {
-    const movieSearchEndPoint = `http://www.omdbapi.com/?apikey=${api_key}rfd&s=${searchTerm}`;
+    const movieSearchEndPoint = `http://www.omdbapi.com/?apikey=${api_key}&s=${searchTerm}`;
     const response = await axios.get(movieSearchEndPoint);
     return {
       movieApiResponse: response.data,
@@ -19,7 +19,6 @@ export async function loader({ request }) {
       error: "",
     }; //return searchTearm so that when s=null bydefault marvel should be in search query
   } catch (error) {
-    console.log("error", error);
     const errorMessage =
       error?.response?.data?.Error || error.message || "Something Went Wrong";
     return {

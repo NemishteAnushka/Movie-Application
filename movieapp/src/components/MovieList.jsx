@@ -5,10 +5,11 @@ function MovieList({ data }) {
   const { movieApiResponse, isError, error } = data;
   if (isError) {
     return <h1>{error}</h1>;
-  }
+  } //when there is error in api or network error
+
   if (movieApiResponse && movieApiResponse?.Response === "False") {
-    return <h1>{movieApiResponse.Error}</h1>;
-  }
+    return <h1>{movieApiResponse.Error || "No result found"}</h1>;
+  } // this is error for if search is not found
   return (
     <div>
       {movieApiResponse.Search.map((movie) => (
