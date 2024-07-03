@@ -1,6 +1,6 @@
 import React from "react";
 import MovieListItems from "./MovieListItems";
-
+import styles from "./MovieList.module.css";
 function MovieList({ data }) {
   const { movieApiResponse, isError, error } = data;
   if (isError) {
@@ -11,7 +11,7 @@ function MovieList({ data }) {
     return <h1>{movieApiResponse.Error || "No result found"}</h1>;
   } // this is error for if search is not found
   return (
-    <div>
+    <div className={`container ${styles.moviesList}`}>
       {movieApiResponse.Search.map((movie) => (
         <MovieListItems {...movie} key={movie.imdbID} />
       ))}
